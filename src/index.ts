@@ -1,14 +1,11 @@
-interface DeepArray<T> extends Array<T | DeepArray<T>> {}
-type ClassNames = DeepArray<string | number>
-
-const getClassNames = (...classNames: ClassNames): string => {
+const getClassNames = (...classNames: any[]): string => {
   return (
     // @ts-ignore
     classNames
-      // @ts-ignore
       .flat(Infinity)
-      .filter((a: String) => a)
+      .filter((item: any) => item && typeof item === 'string')
       .join(' ')
+      .trim()
       .replace(/ {2,}/gim, ' ')
   )
 }
