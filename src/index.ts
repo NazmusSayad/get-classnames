@@ -1,13 +1,13 @@
 const getClassNames = (...classNames: any[]): string => {
-  return (
-    // @ts-ignore
-    classNames
-      .flat(Infinity)
-      .filter((item: any) => item && typeof item === 'string')
-      .join(' ')
-      .trim()
-      .replace(/ {2,}/gim, ' ')
-  )
+  let output: string = ''
+
+  classNames.flat(Infinity).forEach((cn) => {
+    if (cn && (typeof cn === 'string' || cn instanceof String)) {
+      output += ' ' + cn
+    }
+  })
+
+  return output.trim().replace(/ {2,}/gim, ' ')
 }
 
 export default getClassNames
