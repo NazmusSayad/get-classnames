@@ -1,14 +1,18 @@
 {
 	"compilerOptions": {
-		"target": "es2019",
+		"target": "es6",
 		"skipLibCheck": true,
 		"declaration": true,
 		"inlineSourceMap": false,
 		"strict": true,
 		"pretty": true,
-		"removeComments": true
+		"removeComments": true,
+		"moduleResolution": "node"
 	},
 	"include": [
-		"src"
+		"src/**/*.js",
+		"src/**/*.jsx",
+		"src/**/*.ts",
+		"src/**/*.tsx"
 	]
 }
