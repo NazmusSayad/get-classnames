@@ -13,13 +13,18 @@ function getClassNames(...classNames: any[]): string {
 }
 
 class GetClassNames {
-  default = getClassNames
-
-  group(prefix: string, ...args: any[]): string {
+  prefix(prefix: string, ...args: any[]): string {
     const className = getClassNames(...args)
     return className === ''
       ? className
       : prefix + className.replace(/ /gim, ' ' + prefix)
+  }
+
+  suffix(suffix: string, ...args: any[]): string {
+    const className = getClassNames(...args)
+    return className === ''
+      ? className
+      : className.replace(/ /gim, suffix + ' ') + suffix
   }
 }
 
@@ -27,4 +32,4 @@ interface InstanceType extends GetClassNames {
   (...args: any[]): string
 }
 
-export default createClassFunction<InstanceType>(GetClassNames)
+export default createClassFunction<InstanceType>(GetClassNames, getClassNames)

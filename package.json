@@ -18,7 +18,7 @@
     }
   },
   "name": "get-classnames",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "keywords": [
     "valid-classnames",
     "classNames",
@@ -36,6 +36,6 @@
   "homepage": "https://github.com/NazmusSayad/get-classnames#readme",
   "description": "Get classNames from given value",
   "dependencies": {
-    "class-function": "^1.0.0"
+    "class-function": "^1.0.1"
   }
 }

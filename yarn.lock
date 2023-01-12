@@ -25,10 +25,10 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-class-function@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/class-function/-/class-function-1.0.0.tgz#ca68a5a5b8f31c1c3b7aac16516c0e5711d161d5"
-  integrity sha512-n4RYyco+JEqA2iGnd2HvVU99ieJWARSoMF0UYmA4t441ZYb/nv7dg3U5Is4y1tq9SuhZXgk/J/FukaQWrDXoLw==
+class-function@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/class-function/-/class-function-1.0.1.tgz#93042f5bb24b83eb479e06f7c3a1a03d5321ff71"
+  integrity sha512-cpgHTOG3jRQzg3y9EyR1jnQGkGc2UiZRmkWs7Vs3ObGveQqSdDLK38zmFHsN6jY+J71+R7/wEDnTjrh4BuQeeA==
 
 concat-map@0.0.1:
   version "0.0.1"
