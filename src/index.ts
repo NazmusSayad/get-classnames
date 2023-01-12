@@ -1,15 +1,26 @@
 import createClassFunction from 'class-function'
 
-function getClassNames(...classNames: any[]): string {
+const getString = (arg: any[]): string => {
+  const flattedArray = arg.flat(Infinity)
   let output: string = ''
 
-  classNames.flat(Infinity).forEach((cn) => {
+  let i = 0
+  for (i; i < flattedArray.length; i++) {
+    const cn = flattedArray[i]
     if (cn && (typeof cn === 'string' || cn instanceof String)) {
       output += ' ' + cn
     }
-  })
+  }
 
-  return output.trim().replace(/ {2,}/gim, ' ')
+  return output
+}
+
+const formatString = (str: string): string => {
+  return str.trim().replace(/ {2,}/gim, ' ')
+}
+
+function getClassNames(...args: any[]): string {
+  return formatString(getString(args))
 }
 
 class GetClassNames {
@@ -26,10 +37,24 @@ class GetClassNames {
       ? className
       : className.replace(/ /gim, suffix + ' ') + suffix
   }
+
+  tw(...args: any[]) {
+    let variantClass = ''
+    let normalClass = getString(args)
+    const matchedVariants = [...normalClass.matchAll(tailwindVariantRegex)]
+
+    matchedVariants.forEach(([full, key, value]) => {
+      normalClass = normalClass.replace(full, ' ')
+      variantClass += ' ' + this.prefix(key, value)
+    })
+
+    return formatString(getString([normalClass]) + variantClass)
+  }
 }
 
 interface InstanceType extends GetClassNames {
   (...args: any[]): string
 }
 
+export const tailwindVariantRegex = /([a-z\-0-9:]+:)\((.*?)\)/gim
 export default createClassFunction<InstanceType>(GetClassNames, getClassNames)
