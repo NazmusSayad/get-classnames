@@ -37,20 +37,8 @@ class GetClassNames {
       ? className
       : className.replace(/ /gim, suffix + ' ') + suffix
   }
-
-  tw(...args: any[]) {
-    const className = getString(args).replace(
-      tailwindVariantRegex,
-      (matched) => {
-        const [, key, value] = matched.match(/(.*)\((.*)\)/)!
-        return this.prefix(key, value)
-      }
-    )
-    return formatString(className)
-  }
 }
 
-export const tailwindVariantRegex = /([a-z\-0-9:]+:)\((.*?)\)/gim
 export default createClassFunction<InstanceType>(GetClassNames, getClassNames)
 interface InstanceType extends GetClassNames {
   (...args: any[]): string
